@@ -9,14 +9,33 @@ Based on [PhotoFloat](https://github.com/zx2c4/PhotoFloat)
 
 To create a new photo gallery:
 
-* Delete the pictures from the folders `web/albums` and `web/cache`
-* Add the pics to `web/albums`
-* Run the python script in `scanner`: 
+* Add all the pictures of the new dicty conference into a folder and name it `dicty##` (`##` being the year of the dicty meeting)
+* Move the folder into `web/albums`
+* Run in `scanner` the python script...:
 
 ```
 python main.py ../web/albums ../web/cache
 ```
-Finally, a quick and dirty step: all the pictures in `cache` have to be renamed to `root-nameOfThePicture`.
+
+* Delete the file `root.json` from `cache`
+* Copy in the server:
+	* The folder `dicty##` into the folder in the server `album`
+	* All the generated pictures of `cache` into the `cache` folder of the server
+* Add the new album in the `root.json` file of the server, i.e.,
+
+```
+{
+	"path": "", 
+	"albums": [
+	{"date": "Aug 2011", "path": "dicty11"},
+	{"date": "Aug 2012", "path": "dicty12"}, 
+	{"date": "Aug 2013", "path": "dicty13"},
+	{"date": "Month ####", "path": "dicty##"} <---- This is the new album
+	], 
+	"photos": []
+}
+```
+
 
 ### Notes about python
 
